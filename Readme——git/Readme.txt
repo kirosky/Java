@@ -210,3 +210,44 @@ $ git branch -d [branch-name]
 $ git push origin --delete [branch-name]
 $ git branch -dr [remote/branch]
 IDEA中操作
+
+
+
+#分支
+我们创建dev分支，然后切换到dev分支
+git checkout -b dev
+
+git checkout命令加上-b参数表示创建并切换，相当于以下两条命令
+$ git branch dev
+$ git checkout dev
+Switched to branch 'dev'
+
+然后，用git branch命令查看当前分支
+
+$ git branch
+* dev
+  master
+  
+  
+  git branch命令会列出所有分支，当前分支前面会标一个*号。
+
+然后，我们就可以在dev分支上正常提交，比如对readme.txt做个修改，加上一行
+
+git add readme.txt 
+$ git commit -m "branch test"
+
+现在，dev分支的工作完成，我们就可以切换回master分支
+$ git checkout master
+
+我们把dev分支的工作成果合并到master分支上
+$ git merge dev
+
+合并完成后，就可以放心地删除dev分支了
+$ git branch -d dev
+
+删除后，查看branch，就只剩下master分支了：
+
+$ git branch
+* master
+因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。
+
